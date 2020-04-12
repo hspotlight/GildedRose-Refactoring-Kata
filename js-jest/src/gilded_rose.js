@@ -7,6 +7,10 @@ class Shop {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const itemName = this.items[i].name;
+      if (itemName == ITEM_NAME.SULFURAS) {
+        continue;
+      }
+
       if (
         itemName == ITEM_NAME.AGED_BRIE ||
         itemName == ITEM_NAME.BACKSTAGE_PASSES
@@ -24,15 +28,13 @@ class Shop {
             }
           }
         }
-      } else if (itemName != ITEM_NAME.SULFURAS) {
+      } else {
         if (this.items[i].quality > 0) {
           this.items[i].quality = this.items[i].quality - 1;
         }
       }
 
-      if (itemName != ITEM_NAME.SULFURAS) {
-        this.items[i].sellIn = this.items[i].sellIn - 1;
-      }
+      this.items[i].sellIn = this.items[i].sellIn - 1;
 
       if (this.items[i].sellIn < 0) {
         if (itemName == ITEM_NAME.AGED_BRIE) {
@@ -41,7 +43,7 @@ class Shop {
           }
         } else if (itemName == ITEM_NAME.BACKSTAGE_PASSES) {
           this.items[i].quality = 0;
-        } else if (itemName != ITEM_NAME.SULFURAS) {
+        } else {
           if (this.items[i].quality > 0) {
             this.items[i].quality = this.items[i].quality - 1;
           }
