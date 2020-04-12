@@ -57,6 +57,14 @@ describe("Gilded Rose", () => {
 
       expect(items[0].quality).toBe(50);
     });
+
+    it("quality should decrease twice after sell by date", () => {
+      const gildedRose = new Shop([new Item("foo", 0, 3)]);
+
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toBe(1);
+    });
   });
   describe("Sulfuras", () => {
     it("quality should not degrade and stay in 80", () => {
@@ -69,7 +77,7 @@ describe("Gilded Rose", () => {
 
       expect(items[0].quality).toBe(80);
     });
-    it("sellIn should not descrease and stay same as given date", () => {
+    it("sellIn should not decrease and stay same as given date", () => {
       const gildedRose = new Shop([
         new Item("Sulfuras, Hand of Ragnaros", 10, 80),
       ]);
@@ -80,7 +88,7 @@ describe("Gilded Rose", () => {
     });
   });
   describe("Aged Brie", () => {
-    it("sellIn date should descrease by 1", () => {
+    it("sellIn date should decrease by 1", () => {
       const gildedRose = new Shop([new Item("Aged Brie", 10, 40)]);
 
       const items = gildedRose.updateQuality();
@@ -94,6 +102,14 @@ describe("Gilded Rose", () => {
       const items = gildedRose.updateQuality();
 
       expect(items[0].quality).toBe(41);
+    });
+
+    it("quality should increase twice after sell by date", () => {
+      const gildedRose = new Shop([new Item("Aged Brie", 0, 3)]);
+
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toBe(5);
     });
 
     it("quality should not greater than 50", () => {
