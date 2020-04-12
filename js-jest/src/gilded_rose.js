@@ -1,13 +1,5 @@
 const { ITEM_NAME } = require("./item_name");
-
-class Item {
-  constructor(name, sellIn, quality) {
-    this.name = name;
-    this.sellIn = sellIn;
-    this.quality = quality;
-  }
-}
-
+const { Item } = require("./item");
 class Shop {
   constructor(items = []) {
     this.items = items;
