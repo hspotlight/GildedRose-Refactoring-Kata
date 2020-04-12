@@ -1,4 +1,5 @@
-const { Shop, Item } = require("../src/gilded_rose");
+const { Shop } = require("../src/gilded_rose");
+const { Item, SulfurasItem } = require("../src/item");
 
 describe("Gilded Rose", () => {
   describe("normal item", () => {
@@ -70,7 +71,7 @@ describe("Gilded Rose", () => {
     it("quality should not degrade and stay in 80", () => {
       // TODO: change 'Sulfuras, Hand of Ragnaros' to Sulfuras
       const gildedRose = new Shop([
-        new Item("Sulfuras, Hand of Ragnaros", 10, 80),
+        new SulfurasItem("Sulfuras, Hand of Ragnaros", 10, 80),
       ]);
 
       const items = gildedRose.updateQuality();
@@ -79,7 +80,7 @@ describe("Gilded Rose", () => {
     });
     it("sellIn should not decrease and stay same as given date", () => {
       const gildedRose = new Shop([
-        new Item("Sulfuras, Hand of Ragnaros", 10, 80),
+        new SulfurasItem("Sulfuras, Hand of Ragnaros", 10, 80),
       ]);
 
       const items = gildedRose.updateQuality();

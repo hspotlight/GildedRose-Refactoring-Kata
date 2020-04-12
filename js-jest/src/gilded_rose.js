@@ -1,12 +1,12 @@
 const { ITEM_NAME } = require("./item_name");
-const { Item } = require("./item");
+const { Item, SulfurasItem } = require("./item");
 class Shop {
   constructor(items = []) {
     this.items = items;
   }
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name == ITEM_NAME.SULFURAS) {
+      if (this.items[i] instanceof SulfurasItem) {
         continue;
       }
 
@@ -73,6 +73,5 @@ class Shop {
 }
 
 module.exports = {
-  Item,
   Shop,
 };

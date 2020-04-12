@@ -5,4 +5,7 @@ class Item {
     this.quality = quality;
   }
 }
+class SulfurasItem extends Item {
+}
 exports.Item = Item;
+exports.SulfurasItem = SulfurasItem;
