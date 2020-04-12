@@ -1,10 +1,10 @@
 const { Shop } = require("../src/gilded_rose");
-const { Item, SulfurasItem, AgedBrieItem, BackStagePassesItem } = require("../src/item");
+const { Item, NormalItem, SulfurasItem, AgedBrieItem, BackStagePassesItem } = require("../src/item");
 
 describe("Gilded Rose", () => {
   describe("normal item", () => {
     it("item name should be foo", () => {
-      const gildedRose = new Shop([new Item("foo", 1, 1)]);
+      const gildedRose = new Shop([new NormalItem("foo", 1, 1)]);
 
       const items = gildedRose.updateQuality();
 
@@ -12,7 +12,7 @@ describe("Gilded Rose", () => {
     });
 
     it("sellIn date should decrease by 1 after EOD", () => {
-      const gildedRose = new Shop([new Item("foo", 1, 1)]);
+      const gildedRose = new Shop([new NormalItem("foo", 1, 1)]);
 
       const items = gildedRose.updateQuality();
 
@@ -20,7 +20,7 @@ describe("Gilded Rose", () => {
     });
 
     it("sellIn date should be -1 after sell by date", () => {
-      const gildedRose = new Shop([new Item("foo", 0, 1)]);
+      const gildedRose = new Shop([new NormalItem("foo", 0, 1)]);
 
       const items = gildedRose.updateQuality();
 
@@ -28,7 +28,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should be decreased by 1 after EOD", () => {
-      const gildedRose = new Shop([new Item("foo", 0, 1)]);
+      const gildedRose = new Shop([new NormalItem("foo", 0, 1)]);
 
       const items = gildedRose.updateQuality();
 
@@ -36,7 +36,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should be decreased by 1 after sell by date", () => {
-      const gildedRose = new Shop([new Item("foo", -1, 1)]);
+      const gildedRose = new Shop([new NormalItem("foo", -1, 1)]);
 
       const items = gildedRose.updateQuality();
 
@@ -44,7 +44,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should stay zero after quality drop to zero", () => {
-      const gildedRose = new Shop([new Item("foo", -1, 0)]);
+      const gildedRose = new Shop([new NormalItem("foo", -1, 0)]);
 
       const items = gildedRose.updateQuality();
 
@@ -52,7 +52,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should not greater than 50", () => {
-      const gildedRose = new Shop([new Item("normal item", 10, 50)]);
+      const gildedRose = new Shop([new NormalItem("normal item", 10, 50)]);
 
       const items = gildedRose.items;
 
@@ -60,7 +60,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should decrease twice after sell by date", () => {
-      const gildedRose = new Shop([new Item("foo", 0, 3)]);
+      const gildedRose = new Shop([new NormalItem("foo", 0, 3)]);
 
       const items = gildedRose.updateQuality();
 
