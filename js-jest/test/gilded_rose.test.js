@@ -1,5 +1,5 @@
 const { Shop } = require("../src/gilded_rose");
-const { Item, SulfurasItem } = require("../src/item");
+const { Item, SulfurasItem, AgedBrieItem, BackStagePassesItem } = require("../src/item");
 
 describe("Gilded Rose", () => {
   describe("normal item", () => {
@@ -90,7 +90,7 @@ describe("Gilded Rose", () => {
   });
   describe("Aged Brie", () => {
     it("sellIn date should decrease by 1", () => {
-      const gildedRose = new Shop([new Item("Aged Brie", 10, 40)]);
+      const gildedRose = new Shop([new AgedBrieItem("Aged Brie", 10, 40)]);
 
       const items = gildedRose.updateQuality();
 
@@ -98,7 +98,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should increase by 1", () => {
-      const gildedRose = new Shop([new Item("Aged Brie", 10, 40)]);
+      const gildedRose = new Shop([new AgedBrieItem("Aged Brie", 10, 40)]);
 
       const items = gildedRose.updateQuality();
 
@@ -106,7 +106,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should increase twice after sell by date", () => {
-      const gildedRose = new Shop([new Item("Aged Brie", 0, 3)]);
+      const gildedRose = new Shop([new AgedBrieItem("Aged Brie", 0, 3)]);
 
       const items = gildedRose.updateQuality();
 
@@ -114,7 +114,7 @@ describe("Gilded Rose", () => {
     });
 
     it("quality should not greater than 50", () => {
-      const gildedRose = new Shop([new Item("Aged Brie", 10, 50)]);
+      const gildedRose = new Shop([new AgedBrieItem("Aged Brie", 10, 50)]);
 
       const items = gildedRose.updateQuality();
 
@@ -125,7 +125,7 @@ describe("Gilded Rose", () => {
     it("quality should increase by 1 if sellIn date more than 10", () => {
       // TODO: change 'Backstage passes to a TAFKAL80ETC concert' to Backstage passes
       const gildedRose = new Shop([
-        new Item("Backstage passes to a TAFKAL80ETC concert", 11, 40),
+        new BackStagePassesItem("Backstage passes to a TAFKAL80ETC concert", 11, 40),
       ]);
 
       const items = gildedRose.updateQuality();
@@ -136,7 +136,7 @@ describe("Gilded Rose", () => {
     [6, 7, 8, 9, 10].forEach((sellIn) => {
       it("quality should increase by 2 if sellIn date is " + sellIn, () => {
         const gildedRose = new Shop([
-          new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 40),
+          new BackStagePassesItem("Backstage passes to a TAFKAL80ETC concert", sellIn, 40),
         ]);
 
         const items = gildedRose.updateQuality();
@@ -147,7 +147,7 @@ describe("Gilded Rose", () => {
     [1, 2, 3, 4, 5].forEach((sellIn) => {
       it("quality should increase by 3 if sellIn date is " + sellIn, () => {
         const gildedRose = new Shop([
-          new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 40),
+          new BackStagePassesItem("Backstage passes to a TAFKAL80ETC concert", sellIn, 40),
         ]);
 
         const items = gildedRose.updateQuality();
@@ -157,7 +157,7 @@ describe("Gilded Rose", () => {
     });
     it("quality should drop to 0 if passes sell by date", () => {
       const gildedRose = new Shop([
-        new Item("Backstage passes to a TAFKAL80ETC concert", 0, 40),
+        new BackStagePassesItem("Backstage passes to a TAFKAL80ETC concert", 0, 40),
       ]);
 
       const items = gildedRose.updateQuality();

@@ -7,5 +7,12 @@ class Item {
 }
 class SulfurasItem extends Item {
 }
+class AgedBrieItem extends Item {
+}
+class BackStagePassesItem extends Item {
+
+}
 exports.Item = Item;
 exports.SulfurasItem = SulfurasItem;
+exports.AgedBrieItem = AgedBrieItem;
+exports.BackStagePassesItem = BackStagePassesItem;
