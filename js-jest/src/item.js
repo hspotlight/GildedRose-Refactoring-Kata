@@ -7,50 +7,51 @@ class Item {
 }
 class NormalItem extends Item {
   updateQuality() {
-    if (this.quality > 0) {
-      this.quality = this.quality - 1;
-    }
-
     this.sellIn = this.sellIn - 1;
 
     if (this.sellIn < 0) {
-      if (this.quality > 0) {
-        this.quality = this.quality - 1;
+      this.quality = this.quality - 2;
+      if (this.quality < 0) {
+        this.quality = 0;
+      }
+    } else {
+      this.quality = this.quality - 1;
+      if (this.quality < 0) {
+        this.quality = 0;
       }
     }
   }
 }
 class SulfurasItem extends Item {
-  updateQuality() {
-  }
+  updateQuality() {}
 }
 class AgedBrieItem extends Item {
   updateQuality() {
-    if (this.quality < 50) {
-      this.quality = this.quality + 1;
-    }
-
     this.sellIn = this.sellIn - 1;
-
     if (this.sellIn < 0) {
-      if (this.quality < 50) {
-        this.quality = this.quality + 1;
+      this.quality = this.quality + 2;
+      if (this.quality > 50) {
+        this.quality = 50;
+      }
+    } else {
+      this.quality = this.quality + 1;
+      if (this.quality > 50) {
+        this.quality = 50;
       }
     }
   }
 }
 class BackStagePassesItem extends Item {
   updateQuality() {
-    if (this.quality < 50) {
+    if (this.sellIn < 6) {
+      this.quality = this.quality + 3;
+    } else if (this.sellIn < 11) {
+      this.quality = this.quality + 2;
+    } else {
       this.quality = this.quality + 1;
-      if (this.quality < 50) {
-        if (this.sellIn < 11) {
-          this.quality = this.quality + 1;
-        }
-        if (this.sellIn < 6) {
-          this.quality = this.quality + 1;
-        }
-      }
+    }
+    if (this.quality > 50) {
+      this.quality = 50;
     }
 
     this.sellIn = this.sellIn - 1;

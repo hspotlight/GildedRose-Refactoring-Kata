@@ -34,7 +34,7 @@ describe("Gilded Rose", () => {
 
       expect(items[0].quality).toBe(0);
     });
-
+  
     it("quality should be decreased by 1 after sell by date", () => {
       const gildedRose = new Shop([new NormalItem("foo", -1, 1)]);
 
@@ -163,6 +163,15 @@ describe("Gilded Rose", () => {
       const items = gildedRose.updateQuality();
 
       expect(items[0].quality).toBe(0);
+    });
+    it("quality should not increase more than 50", () => {
+      const gildedRose = new Shop([
+        new BackStagePassesItem("Backstage passes to a TAFKAL80ETC concert", 3, 50),
+      ]);
+
+      const items = gildedRose.updateQuality();
+
+      expect(items[0].quality).toBe(50);
     });
   });
 });
